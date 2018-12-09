@@ -1,0 +1,24 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+>
+
+  <bean name="custRepository"
+    class="com.pluralsight.repository.HibernateCustomerRepositoryImpl" />
+
+  <!-- by name will not work if field name in a service class for the repository 
+    is diff from repo bean name, there is no setter by name for custRep, setCustRepository 
+    -> will work -->
+  <bean name="customerService"
+  class="com.pluralsight.service.CustomerServiceImpl" autowire="byType"
+>
+    <!-- <property name="customerRepository" ref="custRepository" /> -->
+    <!-- index is a argument number in a constuctor -->
+    <!-- <constructor-arg index="0" ref="custRepository" /> -->
+  </bean>
+
+
+</beans>
